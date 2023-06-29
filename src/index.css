@@ -1,3 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.navColor {
+  background-color: black;
+}
+.bannerColor {
+  background-color: black;
+  padding-left: 20px;
+}
+.bannerColor h1 {
+  color: rgb(153, 155, 25);
+  font-size: 80px;
+}
+.bannerColor h2 {
+  color: rgb(153, 155, 25);
+  font-size: 80px;
+}
+.baseImage {
+  position: relative;
+}
+.bottom-left {
+  position: absolute;
+  top: 2%;
+  bottom: 50%;
+  left: 2%;
+  color: white !important;
+  font-style: inherit;
+}
+.bottom-right {
+  position: absolute;
+  top: 92%;
+  bottom: 50%;
+  left: 45%;
+  color: white !important;
+  font-style: inherit;
+}
+.cardItems {
+  text-align: center;
+  color: white !important;
+  background-color: rgb(75, 72, 72) !important;
+  width: 25rem !important;
+  height: 25rem !important;
+}
+.cardPics {
+  width: 15rem !important;
+  height: 15rem !important;
+}

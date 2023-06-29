@@ -1,9 +1,21 @@
 // @flow strict
 
 import * as React from "react";
-
+import MenuList from "./MenuList";
+import Banner from "./Banner";
+import PackageListing from "./PackageListing";
 const Main = () => {
-  return <h1>Home page</h1>;
+  const test = () => {
+    console.log("Hello Main");
+  };
+  return (
+    <>
+      <MenuList />
+      <Banner />
+
+      <PackageListing />
+    </>
+  );
 };
 
 export default Main;
