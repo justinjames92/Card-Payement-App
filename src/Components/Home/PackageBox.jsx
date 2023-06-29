@@ -13,7 +13,6 @@ function PackageBox({ title, price, thumbnail, dummytest }) {
   // };
   return (
     <Container>
-      <p>hellooo github</p>
       <Row className="m-auto">
         <Col>
           <Card className="cardItems">
