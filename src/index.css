@@ -43,3 +43,11 @@
   width: 15rem !important;
   height: 15rem !important;
 }
+.cartLength {
+  display: inline-block;
+  color: white;
+}
+
+.cartLength span {
+  margin-right: 20px;
+}
