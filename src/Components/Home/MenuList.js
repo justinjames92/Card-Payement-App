@@ -10,13 +10,18 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import cart from "../../Images/add-cart.png";
 import favorite from "../../Images/favorite.png";
+import { CartContext } from "./../../Context/Context";
+import { useContext } from "react";
 
 const MenuList = () => {
+  const { selectedItems } = useContext(CartContext);
+  console.log(selectedItems.length);
   return (
     <Navbar className="navColor" variant="dark">
       <Container className="navColor">
         <Navbar.Brand href="#Freedom">
-          Freedom <img src={logo} width={"25px"} height={"25px"}></img>
+          FashionWorld{" "}
+          <img src={logo} width={"25px"} height={"25px"} alt="image"></img>
         </Navbar.Brand>
 
         <Nav>
@@ -34,13 +39,16 @@ const MenuList = () => {
           <Button className="btn btn-dark">Search</Button>
         </Form>
         <div>
-          <img
-            className="me-4"
-            title="cart"
-            src={cart}
-            width={"25px"}
-            height={"25px"}
-          ></img>
+          <div className="cartLength">
+            <img
+              className="me-4"
+              title="cart"
+              src={cart}
+              width={"25px"}
+              height={"25px"}
+            ></img>
+            <span>{selectedItems.length}</span>
+          </div>
           <img
             title="favorite"
             src={favorite}

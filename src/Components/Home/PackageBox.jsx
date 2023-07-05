@@ -1,39 +1,46 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Carousel, Col, Container, Row } from "react-bootstrap";
-import mobile from "../../Images/mobile.jpg";
+import { Col, Container, Row } from "react-bootstrap";
+import { CartContext } from "./../../Context/Context";
+import { useContext } from "react";
 
-function PackageBox({ title, price, thumbnail, dummytest }) {
+function PackageBox({
+  categoryName,
+  packageTitle,
+  packageThumbnail,
+  packagePrice,
+}) {
   // const { title, price, thumbnail, test } = props;
-
-  // const testthree = () => {
-  //   console.log("ghghg");
-  //   dummytest();
-  // };
+  const { addCart, selectedItems } = useContext(CartContext);
   return (
-    <Container>
-      <Row className="m-auto">
-        <Col>
-          <Card className="cardItems">
-            <Card.Body>
-              <Card.Img
-                className="cardPics"
-                src={thumbnail}
-                alt="Phone image"
-              />
-              <Card.Title>Model : {title}</Card.Title>
-              <Card.Text>Price : {price} $</Card.Text>
+    <Card className="cardItems mt-2 mr-2">
+      <Card.Body>
+        <Card.Img
+          className="cardPics"
+          src={packageThumbnail}
+          alt="Phone image"
+        />
+        <Card.Title>Model : {packageTitle}</Card.Title>
+        <Card.Text>Price : {packagePrice} $</Card.Text>
 
-              <br></br>
-              <Button className="mt-2" variant="secondary" onClick={dummytest}>
-                Add to cart
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+        <br></br>
+
+        {selectedItems && selectedItems.some((z) => z.name === packageTitle) ? (
+          <Button className="mt-2" variant="secondary">
+            View Cart
+          </Button>
+        ) : (
+          <Button
+            className="mt-2"
+            variant="secondary"
+            onClick={() => addCart(packageTitle, categoryName)}
+          >
+            Add to cart
+          </Button>
+        )}
+      </Card.Body>
+    </Card>
   );
 }
 

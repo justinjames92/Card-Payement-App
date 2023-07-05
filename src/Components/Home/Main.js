@@ -4,17 +4,16 @@ import * as React from "react";
 import MenuList from "./MenuList";
 import Banner from "./Banner";
 import PackageListing from "./PackageListing";
+import Cart from "../../Context/Context";
+
 const Main = () => {
-  const test = () => {
-    console.log("Hello Main");
-  };
   return (
-    <>
+    <Cart>
       <MenuList />
       <Banner />
 
       <PackageListing />
-    </>
+    </Cart>
   );
 };
 
