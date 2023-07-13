@@ -26,7 +26,7 @@ const MenuList = () => {
 
         <Nav>
           <Nav.Link href="#Home">Home</Nav.Link>
-          <Nav.Link href="#Coverage">Coverage</Nav.Link>
+          <Nav.Link href="#Coverage">Items</Nav.Link>
           <Nav.Link href="#Support">Support</Nav.Link>
         </Nav>
         <Form className="d-flex">
