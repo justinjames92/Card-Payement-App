@@ -14,8 +14,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Context>
-        {/* <Home />
-        <Items /> */}
+        
         <MainRouter />
       </Context>
     </BrowserRouter>
