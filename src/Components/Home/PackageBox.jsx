@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Col, Container, Row } from "react-bootstrap";
 import { CartContext } from "./../../Context/Context";
 import { useContext } from "react";
 

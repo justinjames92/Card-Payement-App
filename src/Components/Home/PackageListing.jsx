@@ -25,6 +25,9 @@ function PackageListing() {
           ))
         )}
       </Row>
+      <Row>
+        <button>See All items</button>
+      </Row>
     </div>
   );
 }
