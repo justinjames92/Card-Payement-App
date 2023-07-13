@@ -19,15 +19,15 @@ const MenuList = () => {
   return (
     <Navbar className="navColor" variant="dark">
       <Container className="navColor">
-        <Navbar.Brand href="#Freedom">
+        <Navbar.Brand href="/">
           FashionWorld{" "}
           <img src={logo} width={"25px"} height={"25px"} alt="image"></img>
         </Navbar.Brand>
 
         <Nav>
-          <Nav.Link href="#Home">Home</Nav.Link>
-          <Nav.Link href="#Coverage">Items</Nav.Link>
-          <Nav.Link href="#Support">Support</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/Items">Items</Nav.Link>
+          <Nav.Link href="#Support">Cart</Nav.Link>
         </Nav>
         <Form className="d-flex">
           <Form.Control

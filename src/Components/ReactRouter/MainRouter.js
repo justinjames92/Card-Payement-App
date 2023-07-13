@@ -1,13 +1,22 @@
 import React from "react";
 import Home from "../../Pages/Home";
 import Items from "../../Pages/Items";
-import { Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const MainRouter = () => {
   return (
     <div>
-      <Home />
-      <Items />
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/Items" element={<Items />}/>
+
+        
+
+       
+     
+
+        </Routes>
+      
     </div>
   );
 };
