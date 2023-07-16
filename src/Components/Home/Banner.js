@@ -8,10 +8,10 @@ function Banner() {
   return (
     <>
       <div className="Containerfluid bannerColor">
-        <Row>
+        {/* <Row>
           <Col md={6}>
             <h1>EXPLORE</h1>
-            <h1>OUR BEST PLANS</h1>
+            <h1>OUR BEST </h1>
             <h5>Save $200 on the purchase of select iphone 12 Pro Max</h5>
             <h6>
               with code 12PROMAXSALE (case sensitive) until June 22, 2023*
@@ -28,7 +28,7 @@ function Banner() {
               <h3 className="bottom-right">Iphone12ProMax</h3>
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </div>
     </>
   );

@@ -8,25 +8,29 @@ import { useContext } from "react";
 
 function PackageListing() {
   const { products } = useContext(CartContext);
-  let HatsArray = products.filter((i) => i.title === "Hats");
+  let hatsArray = products.find((i) => i.title === "Hats");
   return (
     <div>
       <Row>
-        {HatsArray.map((element) =>
-          element.items.map((item) => (
-            <Col md={3}>
-              <PackageBox
-                categoryName={element.title}
-                packageTitle={item.name}
-                packageThumbnail={item.imageUrl}
-                packagePrice={item.price}
-              />
-            </Col>
-          ))
-        )}
+        {hatsArray.items.map((item) => (
+          <Col md={3}>
+            <PackageBox
+              categoryName={"Hats"}
+              packageTitle={item.name}
+              packageThumbnail={item.imageUrl}
+              packagePrice={item.price}
+            />
+          </Col>
+        ))}
       </Row>
       <Row>
-        <button>See All items</button>
+        <Col md={12}>
+          <div className="seeAllBlock">
+            <a className="seeAll" href="/Products">
+              See All items
+            </a>
+          </div>
+        </Col>
       </Row>
     </div>
   );

@@ -4,15 +4,15 @@ import { CartContext } from "./../../Context/Context";
 import { useEffect, useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import PackageBox from "../../Components/Home/PackageBox";
-
 function ItemsListing() {
   const { products } = useContext(CartContext);
   const [product, setProduct] = useState({});
   const [selectedOption, setSelectedOption] = useState("Hats");
+
   useEffect(() => {
     let filteredData = products.find((i) => i.title === selectedOption);
     setProduct(filteredData);
-  }, [selectedOption]);
+  }, [selectedOption]); //dependency array
 
   const updateItemList = (e) => {
     console.log(e);
@@ -27,9 +27,7 @@ function ItemsListing() {
         ))}
       </select>
       <Row>
-        {product &&
-          product.items !== undefined &&
-          product.items.length > 0 &&
+        {product.items !== undefined &&
           product.items.map((item) => (
             <Col md={3}>
               <PackageBox

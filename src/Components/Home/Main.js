@@ -11,7 +11,6 @@ const Main = () => {
     <Cart>
       <MenuList />
       <Banner />
-
       <PackageListing />
     </Cart>
   );

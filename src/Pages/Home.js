@@ -2,11 +2,7 @@ import * as React from "react";
 import Main from "../Components/Home/Main";
 
 const Home = () => {
-  return (
-    <>
-      <Main />
-    </>
-  );
+  return <Main />;
 };
 
 export default Home;
