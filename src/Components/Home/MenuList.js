@@ -15,7 +15,6 @@ import { useContext } from "react";
 
 const MenuList = () => {
   const { selectedItems } = useContext(CartContext);
-  console.log(selectedItems.length);
   return (
     <Navbar className="navColor" variant="dark">
       <Container className="navColor">
