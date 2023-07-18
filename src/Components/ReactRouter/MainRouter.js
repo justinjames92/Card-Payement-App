@@ -7,16 +7,9 @@ const MainRouter = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/Products" element={<Items />}/>
-
-        
-
-       
-     
-
-        </Routes>
-      
+        <Route path="/" element={<Home />} />
+        <Route path="/Products" element={<Items />} />
+      </Routes>
     </div>
   );
 };

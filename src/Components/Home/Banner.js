@@ -1,14 +1,20 @@
 // @flow strict
 
 import * as React from "react";
+import { useContext } from "react";
+import { CartContext } from "./../../Context/Context";
+import Card from "react-bootstrap/Card";
 
-import { Row, Col } from "react-bootstrap";
-import mobile from "../../Images/mobile.jpg";
+// import { Row, Col } from "react-bootstrap";
+// import mobile from "../../Images/mobile.jpg";
 function Banner() {
+  const { products, product, selectedOption, setSelectedOption } =
+    useContext(CartContext);
   return (
     <>
-      <div className="Containerfluid bannerColor">
-        {/* <Row>
+      {/* <div className="Containerfluid bannerColor"> */}
+
+      {/* <Row>
           <Col md={6}>
             <h1>EXPLORE</h1>
             <h1>OUR BEST </h1>
@@ -29,6 +35,17 @@ function Banner() {
             </div>
           </Col>
         </Row> */}
+
+      {/* </div> */}
+
+      <div>
+        <Card className="cardItems mt-2 mr-2">
+          <Card.Body>
+            <Card.Img className="cardPics" src="" alt="Phone image" />
+            <Card.Title>Model :</Card.Title>
+            <Card.Text>Price : </Card.Text>
+          </Card.Body>
+        </Card>
       </div>
     </>
   );
