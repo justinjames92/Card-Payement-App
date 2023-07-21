@@ -10,7 +10,6 @@ function PackageBox({
   packageThumbnail,
   packagePrice,
 }) {
-  // const { title, price, thumbnail, test } = props;
   const { addCart, selectedItems } = useContext(CartContext);
   return (
     <Card className="cardItems mt-2 mr-2">
@@ -40,6 +39,7 @@ function PackageBox({
         )}
       </Card.Body>
     </Card>
+    //***design of an item using card component***
   );
 }
 

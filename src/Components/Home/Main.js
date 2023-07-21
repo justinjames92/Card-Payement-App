@@ -15,7 +15,7 @@ const Main = () => {
 
       <ProductTiles />
 
-      <PackageListing />
+      {/* <PackageListing /> */}
     </Cart>
   );
 };
