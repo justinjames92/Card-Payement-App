@@ -18,19 +18,11 @@ const Cart = ({ children }) => {
     setSelectedItems(cartList);
   };
   console.log(selectedOption);
+
   useEffect(() => {
     let filteredData = products.find((i) => i.title === selectedOption);
     setProduct(filteredData);
   }, [selectedOption]); //dependency array
-
-  // useEffect(() => {
-  //   fetch("https://dummyjson.com/products/search?q=phone")
-  //     .then((res) => res.json())
-  //     .then((data) => setProducts(data.products));
-  //   // axios.get("https://dummyjson.com/products/search?q=phone")
-  //   //   .then((response) => setData(response.data.products))
-  //   //   .catch((err) => console.log(err));
-  // }, []);
 
   return (
     <>
@@ -52,6 +44,3 @@ const Cart = ({ children }) => {
 };
 
 export default Cart;
-
-// s="2";
-// a=["name"="1","name"="2","name"="3"];

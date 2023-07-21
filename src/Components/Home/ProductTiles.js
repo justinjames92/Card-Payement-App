@@ -13,7 +13,7 @@ const ProductTiles = () => {
   const shopNow = (productTitle) => {
     console.log(productTitle);
     setSelectedOption(productTitle);
-    // navigate("/Products");
+    navigate("/Products");
   };
   console.log(selectedOption);
 

@@ -9,6 +9,7 @@ import { useContext } from "react";
 function PackageListing() {
   const { products } = useContext(CartContext);
   let hatsArray = products.find((i) => i.title === "Hats");
+  console.log(hatsArray);
   return (
     <div>
       <Row>

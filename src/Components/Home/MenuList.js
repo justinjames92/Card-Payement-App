@@ -47,6 +47,7 @@ const MenuList = () => {
               height={"25px"}
             ></img>
             <span>{selectedItems.length}</span>
+            {/*  */}
           </div>
           <img
             title="favorite"
