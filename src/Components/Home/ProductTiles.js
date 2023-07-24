@@ -3,19 +3,16 @@ import { useContext } from "react";
 import { CartContext } from "./../../Context/Context";
 import Card from "react-bootstrap/Card";
 import { Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 
 const ProductTiles = () => {
-  const { products, selectedOption, setSelectedOption } =
+  const { products,  } =
     useContext(CartContext);
-  const navigate = useNavigate();
+ 
 
   const shopNow = (productTitle) => {
     console.log(productTitle);
-    setSelectedOption(productTitle);
-    navigate("/Products");
   };
-  console.log(selectedOption);
 
   return (
     <div>
@@ -30,6 +27,7 @@ const ProductTiles = () => {
                   alt="tile image"
                 />
                 <Card.Title>{i.title}</Card.Title>
+                <Link to ={`/products/${i.title}`}>
                 <button
                   onClick={() => shopNow(i.title)}
                   type="button"
@@ -37,6 +35,9 @@ const ProductTiles = () => {
                 >
                   Shop Now
                 </button>
+
+                </Link>
+              
               </Card.Body>
             </Card>
           </Col>

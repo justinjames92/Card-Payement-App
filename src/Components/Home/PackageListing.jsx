@@ -1,6 +1,4 @@
 import * as React from "react";
-
-// import axios from "axios";
 import PackageBox from "./PackageBox";
 import { Col, Row } from "react-bootstrap";
 import { CartContext } from "./../../Context/Context";
