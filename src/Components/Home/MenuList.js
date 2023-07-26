@@ -12,15 +12,24 @@ import cart from "../../Images/add-cart.png";
 import favorite from "../../Images/favorite.png";
 import { CartContext } from "./../../Context/Context";
 import { useContext } from "react";
+import {  useState,useEffect } from "react";
 
 const MenuList = () => {
-  const { selectedItems } = useContext(CartContext);
-  return (
+    const [selectedItems, setSelectedItems] = useState(JSON.parse(localStorage.getItem("selectedItems"),"[]"));
+
+  useEffect(() => {
+    let  selectedItems =   JSON.parse(localStorage.getItem("selectedItems"),"[]");
+  }, [JSON.parse(localStorage.getItem("selectedItems"),"[]")]); //dependency array
+
+
+  return(
+
+  
     <Navbar className="navColor" variant="dark">
       <Container className="navColor">
         <Navbar.Brand href="/">
-          FashionWorld{" "}
-          <img src={logo} width={"25px"} height={"25px"} alt="image"></img>
+          FashionWorld
+          <img src={logo} width={"25px"} height={"25px"} alt=""></img>
         </Navbar.Brand>
 
         <Nav>
@@ -39,17 +48,23 @@ const MenuList = () => {
         </Form>
         <div>
           <div className="cartLength">
+            <a href="/Carts">
             <img
+            alt=""
               className="me-4"
               title="cart"
               src={cart}
               width={"25px"}
               height={"25px"}
             ></img>
+
+            </a>
+            
             <span>{selectedItems.length}</span>
-            {/*  */}
+            
           </div>
           <img
+          alt=""
             title="favorite"
             src={favorite}
             width={"25px"}

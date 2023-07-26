@@ -18,8 +18,8 @@ function ItemsListing() {
   return (
     <Row>
       {product.items !== undefined &&
-        product.items.map((item) => (
-          <Col md={3}>
+        product.items.map((item,k) => (
+          <Col md={3} key={k}>
             <PackageBox
               categoryName={title}
               packageTitle={item.name}

@@ -6,7 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import { Link,  } from "react-router-dom";
 
 const ProductTiles = () => {
-  const { products,  } =
+  const { products  } =
     useContext(CartContext);
  
 
@@ -17,8 +17,8 @@ const ProductTiles = () => {
   return (
     <div>
       <Row>
-        {products.map((i) => (
-          <Col md={3}>
+        {products.map((i,k) => (
+          <Col md={3} key={k}>
             <Card className="cardItems mt-2 mr-2">
               <Card.Body>
                 <Card.Img
@@ -31,7 +31,7 @@ const ProductTiles = () => {
                 <button
                   onClick={() => shopNow(i.title)}
                   type="button"
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                 >
                   Shop Now
                 </button>
