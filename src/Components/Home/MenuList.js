@@ -17,10 +17,7 @@ import {  useState,useEffect } from "react";
 const MenuList = () => {
     const [selectedItems, setSelectedItems] = useState(JSON.parse(localStorage.getItem("selectedItems"),"[]"));
 
-  useEffect(() => {
-    let  selectedItems =   JSON.parse(localStorage.getItem("selectedItems"),"[]");
-  }, [JSON.parse(localStorage.getItem("selectedItems"),"[]")]); //dependency array
-
+ 
 
   return(
 
@@ -60,7 +57,7 @@ const MenuList = () => {
 
             </a>
             
-            <span>{selectedItems.length}</span>
+            {/* <span>{selectedItems.length}</span> */}
             
           </div>
           <img
