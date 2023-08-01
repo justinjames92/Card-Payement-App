@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { CartContext } from "./../../Context/Context";
@@ -10,7 +10,27 @@ function PackageBox({
   packageThumbnail,
   packagePrice,
 }) {
-  const { addCart, selectedItems } = useContext(CartContext);
+  const { products } = useContext(CartContext);
+  const [cartList, setCartList] = useState([])
+
+  const addCart = (packageTitle, categoryName) => {
+    let category = products.find((x) => x.title === categoryName);
+    let categoryView = category.items.find((y) => y.name === packageTitle);
+    let addedItem = [];//
+    if (JSON.parse(localStorage.getItem("selectedItems"), "[]")) {
+      addedItem = JSON.parse(localStorage.getItem("selectedItems"), "[]");
+    }
+
+    addedItem.push(categoryView)
+
+    setCartList(addedItem);
+
+
+    localStorage.setItem("selectedItems", JSON.stringify(addedItem));
+
+  };
+  
+
   return (
     <Card className="cardItems mt-2 mr-2">
       <Card.Body>
@@ -24,7 +44,7 @@ function PackageBox({
 
         <br></br>
 
-        {selectedItems && selectedItems.some((z) => z.name === packageTitle) ? (
+        {cartList && cartList.some((z) => z.name === packageTitle) ? (
           <Button className="mt-2" variant="secondary">
             View Cart
           </Button>
