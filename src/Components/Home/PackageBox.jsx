@@ -11,6 +11,8 @@ function PackageBox({
   packagePrice,
 }) {
   const { products } = useContext(CartContext);
+
+  
   const [cartList, setCartList] = useState([])
 
   const addCart = (packageTitle, categoryName) => {
@@ -21,7 +23,7 @@ function PackageBox({
       addedItem = JSON.parse(localStorage.getItem("selectedItems"), "[]");
     }
 
-    addedItem.push(categoryView)
+    addedItem.push({...categoryView, quantity: 0})
 
     setCartList(addedItem);
 
