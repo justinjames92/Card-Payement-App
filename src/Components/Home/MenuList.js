@@ -15,7 +15,7 @@ import { useContext } from "react";
 import {  useState,useEffect } from "react";
 
 const MenuList = () => {
-    const [selectedItems, setSelectedItems] = useState(JSON.parse(localStorage.getItem("selectedItems"),"[]"));
+    // const [selectedItems, setSelectedItems] = useState(JSON.parse(localStorage.getItem("selectedItems"),"[]"));
 
  
 
