@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { CartContext } from "./../../Context/Context";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function PackageBox({
   categoryName,
@@ -11,8 +12,9 @@ function PackageBox({
   packagePrice,
 }) {
   const { products } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  
+
   const [cartList, setCartList] = useState([])
 
   const addCart = (packageTitle, categoryName) => {
@@ -23,7 +25,7 @@ function PackageBox({
       addedItem = JSON.parse(localStorage.getItem("selectedItems"), "[]");
     }
 
-    addedItem.push({...categoryView, quantity: 0})
+    addedItem.push({ ...categoryView, quantity: 1 })
 
     setCartList(addedItem);
 
@@ -31,7 +33,11 @@ function PackageBox({
     localStorage.setItem("selectedItems", JSON.stringify(addedItem));
 
   };
-  
+  const viewCart = () => {
+    navigate("/Carts");
+
+  }
+
 
   return (
     <Card className="cardItems mt-2 mr-2">
@@ -47,7 +53,7 @@ function PackageBox({
         <br></br>
 
         {cartList && cartList.some((z) => z.name === packageTitle) ? (
-          <Button className="mt-2" variant="secondary">
+          <Button className="mt-2" variant="secondary" onClick={() => viewCart()}>
             View Cart
           </Button>
         ) : (

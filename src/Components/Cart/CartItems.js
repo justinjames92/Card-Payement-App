@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import remove from "../../Images/delete.png";
@@ -26,16 +26,25 @@ const CartItems = () => {
 
       setCart(data);
     }
-    else {
-      if (type === 'decrement' && selectedData.quantity > 0) {
+    else{
+      if (selectedData.quantity >0) 
+       {
 
         selectedData.quantity = selectedData.quantity - 1;
         data[selectedIndex] = selectedData;
 
         setCart(data);
       }
+      if(selectedData.quantity ===0){
+        let data = [...cart]
+        let removedItem = data.filter((i) => i.id !== id)
+        setCart(removedItem)
+        localStorage.setItem("selectedItems", JSON.stringify(removedItem));
+      }
 
-    }
+
+    } 
+  
 
 
   }
@@ -61,12 +70,6 @@ const CartItems = () => {
     setCart(removedItem)
     localStorage.setItem("selectedItems", JSON.stringify(removedItem));
   }
-
-
-
-
-
-
   return (
     <>
       <div>
