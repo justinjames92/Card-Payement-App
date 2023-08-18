@@ -1,7 +1,6 @@
 // @flow strict
 
-import * as React from "react";
-// import { Row, Col } from "react-bootstrap";
+import React, { useState, useMemo} from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -10,14 +9,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import cart from "../../Images/add-cart.png";
 import favorite from "../../Images/favorite.png";
-import { CartContext } from "./../../Context/Context";
 import { useContext } from "react";
-import {  useState,useEffect } from "react";
+import { CartContext } from "../../Context/Context";
+
 
 const MenuList = () => {
-    // const [selectedItems, setSelectedItems] = useState(JSON.parse(localStorage.getItem("selectedItems"),"[]"));
-
+  const { selectedItems} = useContext(CartContext);
  
+console.log(selectedItems);
+
 
   return(
 
@@ -31,8 +31,7 @@ const MenuList = () => {
 
         <Nav>
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/Products">Products</Nav.Link>
-          <Nav.Link href="#Support">Cart</Nav.Link>
+        
         </Nav>
         <Form className="d-flex">
           <Form.Control
@@ -57,7 +56,7 @@ const MenuList = () => {
 
             </a>
             
-            {/* <span>{selectedItems.length}</span> */}
+            <span>{selectedItems.length}</span>
             
           </div>
           <img
