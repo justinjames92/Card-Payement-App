@@ -11,16 +11,16 @@ function PackageBox({
   packageThumbnail,
   packagePrice,
 }) {
-  const { products } = useContext(CartContext);
+  const { products,setSelectedItems} = useContext(CartContext);
   const navigate = useNavigate();
 
 
-  const [cartList, setCartList] = useState([])
+  const [cartList, setCartList] = useState(JSON.parse(localStorage.getItem("selectedItems"), "[]"))
 
   const addCart = (packageTitle, categoryName) => {
     let category = products.find((x) => x.title === categoryName);
     let categoryView = category.items.find((y) => y.name === packageTitle);
-    let addedItem = [];//
+    let addedItem = [];
     if (JSON.parse(localStorage.getItem("selectedItems"), "[]")) {
       addedItem = JSON.parse(localStorage.getItem("selectedItems"), "[]");
     }
@@ -31,6 +31,8 @@ function PackageBox({
 
 
     localStorage.setItem("selectedItems", JSON.stringify(addedItem));
+    setSelectedItems(addedItem);
+    
 
   };
   const viewCart = () => {

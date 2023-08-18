@@ -2,13 +2,16 @@ import React from 'react'
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import remove from "../../Images/delete.png";
+import { useContext } from 'react';
+import { CartContext } from '../../Context/Context';
 
 const CartItems = () => {
-  const selectedItems = JSON.parse(localStorage.getItem("selectedItems"));
+  const { selectedItems,setSelectedItems } = useContext(CartContext);
+  const selectedItem = JSON.parse(localStorage.getItem("selectedItems"));
 
 
 
-  const [cart, setCart] = useState(selectedItems || []);
+  const [cart, setCart] = useState(selectedItem || []);
 
 
   const updateItemCount = (type, id) => {
@@ -26,25 +29,25 @@ const CartItems = () => {
 
       setCart(data);
     }
-    else{
-      if (selectedData.quantity >0) 
-       {
+    else {
+      if (selectedData.quantity > 0) {
 
         selectedData.quantity = selectedData.quantity - 1;
         data[selectedIndex] = selectedData;
 
         setCart(data);
       }
-      if(selectedData.quantity ===0){
+      if (selectedData.quantity === 0) {
         let data = [...cart]
         let removedItem = data.filter((i) => i.id !== id)
         setCart(removedItem)
         localStorage.setItem("selectedItems", JSON.stringify(removedItem));
+        setSelectedItems(removedItem);
       }
 
 
-    } 
-  
+    }
+
 
 
   }
@@ -66,63 +69,67 @@ const CartItems = () => {
 
   const removeItem = (id) => {
     let data = [...cart]
-    let removedItem = data.filter((i) => i.id !== id)
+    let removedItem = data.filter((i) => i.id !== id);
     setCart(removedItem)
     localStorage.setItem("selectedItems", JSON.stringify(removedItem));
+    setSelectedItems(removedItem);
   }
   return (
-    <>
+      <>
+     
       <div>
-
-
-        <Row>
-          <Col>
-            <table className="table table-image">
-              <thead>
+      <Row>
+        <Col>
+          <table className="table table-image">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((i, k) => (
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Product</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Total</th>
+                  <td>     <img src={i.imageUrl} className="img-fluid img-thumbnail" alt=""></img></td>
+                  <td>{i.name}</td>
+                  <td>{i.price} $</td>
+                  <td>
+                    <div className="btn-group" role="group">
+                      <button onClick={() => updateItemCount('decrement', i.id)} type="button" className="btn btn-warning"  > - </button>
+                      <input value={i.quantity} min="1" className="form-control" />
+                      <button onClick={() => updateItemCount('increment', i.id)} type="button" className="btn btn-warning"   > + </button>
+                    </div>
+                  </td>
+                  <td>{totalPrice(i.price, i.quantity)}</td>
+                  <td>
+                    <img onClick={() => removeItem(i.id)} src={remove} className="img-fluid img-thumbnail" width={"25px"} height={"25px"} alt=""></img>
+                  </td>
+
                 </tr>
-              </thead>
-              <tbody>
-                {cart.map((i, k) => (
-                  <tr>
-                    <td>     <img src={i.imageUrl} className="img-fluid img-thumbnail" alt=""></img></td>
-                    <td>{i.name}</td>
-                    <td>{i.price} $</td>
-                    <td>
-                      <div className="btn-group" role="group">
-                        <button onClick={() => updateItemCount('decrement', i.id)} type="button" className="btn btn-warning"  > - </button>
-                        <input value={i.quantity} min="1" className="form-control" />
-                        <button onClick={() => updateItemCount('increment', i.id)} type="button" className="btn btn-warning"   > + </button>
-                      </div>
-                    </td>
-                    <td>{totalPrice(i.price, i.quantity)}</td>
-                    <td>
-                      <img onClick={() => removeItem(i.id)} src={remove} className="img-fluid img-thumbnail" width={"25px"} height={"25px"} alt=""></img>
-                    </td>
-
-                  </tr>
-                ))}
+              ))}
 
 
 
-              </tbody>
-            </table>
+            </tbody>
+          </table>
 
-          </Col>
+        </Col>
 
 
-        </Row>
+      </Row>
 
 
 
 
 
-      </div >
+    </div >
+
+    {selectedItems.length > 0 && (
+    
+      <div>
       <Row>
         <Col md={6}></Col>
         <Col md={6}>
@@ -139,8 +146,23 @@ const CartItems = () => {
         </Col>
       </Row>
 
+      </div>
 
-    </>
+    
+
+    
+      
+      
+     
+              
+
+   
+
+    )
+     
+}
+</>
+  
 
 
   )

@@ -1,6 +1,6 @@
 // @flow strict
 
-import * as React from "react";
+import React, { useState, useMemo} from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,12 +9,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import cart from "../../Images/add-cart.png";
 import favorite from "../../Images/favorite.png";
+import { useContext } from "react";
+import { CartContext } from "../../Context/Context";
+
 
 const MenuList = () => {
-    const selectedItems = JSON.parse(localStorage.getItem("selectedItems"));
-    console.log(selectedItems);
-
+  const { selectedItems} = useContext(CartContext);
  
+console.log(selectedItems);
+
 
   return(
 
