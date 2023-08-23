@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { CartContext } from "./../../Context/Context";
@@ -11,11 +11,9 @@ function PackageBox({
   packageThumbnail,
   packagePrice,
 }) {
-  const { products,setSelectedItems} = useContext(CartContext);
+  const { products, setFavoriteProducts, favoriteProducts, cart, setCart } =
+    useContext(CartContext);
   const navigate = useNavigate();
-
-
-  const [cartList, setCartList] = useState(JSON.parse(localStorage.getItem("selectedItems"), "[]"))
 
   const addCart = (packageTitle, categoryName) => {
     let category = products.find((x) => x.title === categoryName);
@@ -25,21 +23,28 @@ function PackageBox({
       addedItem = JSON.parse(localStorage.getItem("selectedItems"), "[]");
     }
 
-    addedItem.push({ ...categoryView, quantity: 1 })
+    addedItem.push({ ...categoryView, quantity: 1 });
 
-    setCartList(addedItem);
-
+    setCart(addedItem);
 
     localStorage.setItem("selectedItems", JSON.stringify(addedItem));
-    setSelectedItems(addedItem);
-    
-
   };
   const viewCart = () => {
     navigate("/Carts");
-
-  }
-
+  };
+  const favCart = (packageTitle, categoryName) => {
+    let category = products.find((x) => x.title === categoryName);
+    let categoryView = category.items.find((y) => y.name === packageTitle);
+    let favourite = [];
+    if(JSON.parse(localStorage.getItem("favoriteItems"),"[]")){
+      favourite = JSON.parse(localStorage.getItem("favoriteItems"),"[]")
+    }
+    favourite.push({ ...categoryView, quantity: 1 });
+    console.log(favourite);
+localStorage.setItem("favoriteItems",JSON.stringify(favourite))
+    setFavoriteProducts(favourite);
+  };
+  console.log(favoriteProducts);
 
   return (
     <Card className="cardItems mt-2 mr-2">
@@ -54,8 +59,12 @@ function PackageBox({
 
         <br></br>
 
-        {cartList && cartList.some((z) => z.name === packageTitle) ? (
-          <Button className="mt-2" variant="secondary" onClick={() => viewCart()}>
+        {cart && cart.some((z) => z.name === packageTitle) ? (
+          <Button
+            className="mt-2"
+            variant="secondary"
+            onClick={() => viewCart()}
+          >
             View Cart
           </Button>
         ) : (
@@ -67,6 +76,13 @@ function PackageBox({
             Add to cart
           </Button>
         )}
+        <Button
+          className="mt-2"
+          variant="secondary"
+          onClick={() => favCart(packageTitle, categoryName)}
+        >
+          Add to Favorites
+        </Button>
       </Card.Body>
     </Card>
     //***design of an item using card component***
