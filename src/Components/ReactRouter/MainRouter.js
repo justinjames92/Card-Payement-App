@@ -3,6 +3,7 @@ import Home from "../../Pages/Home";
 import Items from "../../Pages/Items";
 import { Route, Routes } from "react-router-dom";
 import Cart from "../../Pages/Cart";
+import Favorite from "../../Pages/Favorite";
 
 
 const MainRouter = () => {
@@ -13,6 +14,7 @@ const MainRouter = () => {
         <Route path="/Products/:title" element={<Items />}
          />
          <Route path="/Carts" element={<Cart />}/>
+         <Route path="/Favorite" element={<Favorite />}/>
       </Routes>
     </div>
   );

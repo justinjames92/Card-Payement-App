@@ -1,14 +1,16 @@
-import React, { createContext} from "react";
-import {  useState,useEffect} from "react";
+import React, { createContext, useState } from "react";
 import data from "../Json/shop.data";
 export const CartContext = createContext();
 
 
 const Cart = ({ children }) => {
+  const selectedItem = JSON.parse(localStorage.getItem("selectedItems"))
+  const favoriteItem = JSON.parse(localStorage.getItem("favoriteItems"))
+
   const [products] = useState(data);
   const [product, setProduct] = useState({});
-  const [selectedItems,setSelectedItems] =useState(JSON.parse(localStorage.getItem("selectedItems")));
-
+  const [cart, setCart] = useState(selectedItem || []);
+  const [favoriteProducts, setFavoriteProducts] = useState([favoriteItem]);
   return (
     <>
       <CartContext.Provider
@@ -16,9 +18,12 @@ const Cart = ({ children }) => {
           products,
           product,
           setProduct,
-          setSelectedItems,
-          selectedItems
-          
+
+
+          favoriteProducts,
+          setFavoriteProducts,
+          cart, setCart
+
 
         }}
       >

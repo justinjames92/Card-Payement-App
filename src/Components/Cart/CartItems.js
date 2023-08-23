@@ -1,17 +1,14 @@
 import React from 'react'
-import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import remove from "../../Images/delete.png";
 import { useContext } from 'react';
 import { CartContext } from '../../Context/Context';
 
 const CartItems = () => {
-  const { selectedItems,setSelectedItems } = useContext(CartContext);
-  const selectedItem = JSON.parse(localStorage.getItem("selectedItems"));
+  const { cart, setCart } = useContext(CartContext);
 
+  console.log(cart);
 
-
-  const [cart, setCart] = useState(selectedItem || []);
 
 
   const updateItemCount = (type, id) => {
@@ -40,9 +37,9 @@ const CartItems = () => {
       if (selectedData.quantity === 0) {
         let data = [...cart]
         let removedItem = data.filter((i) => i.id !== id)
-        setCart(removedItem)
         localStorage.setItem("selectedItems", JSON.stringify(removedItem));
-        setSelectedItems(removedItem);
+        setCart(removedItem)
+
       }
 
 
@@ -72,97 +69,96 @@ const CartItems = () => {
     let removedItem = data.filter((i) => i.id !== id);
     setCart(removedItem)
     localStorage.setItem("selectedItems", JSON.stringify(removedItem));
-    setSelectedItems(removedItem);
   }
   return (
-      <>
-     
+    <>
+
       <div>
-      <Row>
-        <Col>
-          <table className="table table-image">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((i, k) => (
+        <Row>
+          <Col>
+            <table className="table table-image">
+              <thead>
                 <tr>
-                  <td>     <img src={i.imageUrl} className="img-fluid img-thumbnail" alt=""></img></td>
-                  <td>{i.name}</td>
-                  <td>{i.price} $</td>
-                  <td>
-                    <div className="btn-group" role="group">
-                      <button onClick={() => updateItemCount('decrement', i.id)} type="button" className="btn btn-warning"  > - </button>
-                      <input value={i.quantity} min="1" className="form-control" />
-                      <button onClick={() => updateItemCount('increment', i.id)} type="button" className="btn btn-warning"   > + </button>
-                    </div>
-                  </td>
-                  <td>{totalPrice(i.price, i.quantity)}</td>
-                  <td>
-                    <img onClick={() => removeItem(i.id)} src={remove} className="img-fluid img-thumbnail" width={"25px"} height={"25px"} alt=""></img>
-                  </td>
-
+                  <th scope="col">#</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Total</th>
                 </tr>
-              ))}
+              </thead>
+              <tbody>
+                {cart.map((i, k) => (
+                  <tr>
+                    <td>     <img src={i.imageUrl} className="img-fluid img-thumbnail" alt=""></img></td>
+                    <td>{i.name}</td>
+                    <td>{i.price} $</td>
+                    <td>
+                      <div className="btn-group" role="group">
+                        <button onClick={() => updateItemCount('decrement', i.id)} type="button" className="btn btn-warning"  > - </button>
+                        <input value={i.quantity} min="1" className="form-control" />
+                        <button onClick={() => updateItemCount('increment', i.id)} type="button" className="btn btn-warning"   > + </button>
+                      </div>
+                    </td>
+                    <td>{totalPrice(i.price, i.quantity)}</td>
+                    <td>
+                      <img onClick={() => removeItem(i.id)} src={remove} className="img-fluid img-thumbnail" width={"25px"} height={"25px"} alt=""></img>
+                    </td>
+
+                  </tr>
+                ))}
 
 
 
-            </tbody>
-          </table>
+              </tbody>
+            </table>
 
-        </Col>
-
-
-      </Row>
+          </Col>
 
 
+        </Row>
 
 
 
-    </div >
 
-    {selectedItems.length > 0 && (
-    
-      <div>
-      <Row>
-        <Col md={6}></Col>
-        <Col md={6}>
-          <div className="card">
 
-            <div className="subTotal card-body">
-              <p className="card-text">Subtotal: {subTotal} $</p>
-              <p className="card-text">SalesTax: {salesTax} $</p>
-              <h5 className="card-text">GrandTotal: {GrandTotal} $</h5>
-              <a href="#" className="btn btn-primary">CheckOut</a>
-            </div>
-          </div>
+      </div >
 
-        </Col>
-      </Row>
+      {cart.length > 0 && (
 
-      </div>
+        <div>
+          <Row>
+            <Col md={6}></Col>
+            <Col md={6}>
+              <div className="card">
 
-    
+                <div className="subTotal card-body">
+                  <p className="card-text">Subtotal: {subTotal} $</p>
+                  <p className="card-text">SalesTax: {salesTax} $</p>
+                  <h5 className="card-text">GrandTotal: {GrandTotal} $</h5>
+                  <a href="#" className="btn btn-primary">CheckOut</a>
+                </div>
+              </div>
 
-    
-      
-      
-     
-              
+            </Col>
+          </Row>
 
-   
+        </div>
 
-    )
-     
-}
-</>
-  
+
+
+
+
+
+
+
+
+
+
+      )
+
+      }
+    </>
+
 
 
   )

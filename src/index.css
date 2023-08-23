@@ -39,6 +39,10 @@
   width: 25rem !important;
   height: 25rem !important;
 }
+.cardItems button {
+
+  text-align: center;
+}
 .cardPics {
   width: 15rem !important;
   height: 15rem !important;

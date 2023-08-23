@@ -1,22 +1,22 @@
 // @flow strict
 
-import React, { useState, useMemo} from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../../Images/Freedom logo.png";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import cart from "../../Images/add-cart.png";
+import cartImage from "../../Images/add-cart.png";
 import favorite from "../../Images/favorite.png";
 import { useContext } from "react";
 import { CartContext } from "../../Context/Context";
 
 
 const MenuList = () => {
-  const { selectedItems} = useContext(CartContext);
+  const { cart} = useContext(CartContext);
  
-console.log(selectedItems);
+console.log(cart);
 
 
   return(
@@ -49,16 +49,17 @@ console.log(selectedItems);
             alt=""
               className="me-4"
               title="cart"
-              src={cart}
+              src={cartImage}
               width={"25px"}
               height={"25px"}
             ></img>
 
             </a>
             
-            <span>{selectedItems.length}</span>
+            <span>{cart.length}</span>
             
           </div>
+          <a href="/Favorite">
           <img
           alt=""
             title="favorite"
@@ -66,6 +67,8 @@ console.log(selectedItems);
             width={"25px"}
             height={"25px"}
           ></img>
+          </a>
+        
         </div>
       </Container>
     </Navbar>
