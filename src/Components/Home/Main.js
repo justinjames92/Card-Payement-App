@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <Cart>
       <MenuList />
-      <Banner />
+      {/* <Banner /> */}
 
       <ProductTiles />
 
