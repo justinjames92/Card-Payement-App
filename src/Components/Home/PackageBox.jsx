@@ -6,10 +6,12 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 function PackageBox({
+  type,
   categoryName,
   packageTitle,
   packageThumbnail,
   packagePrice,
+
 }) {
   const { products, setFavoriteProducts, favoriteProducts, cart, setCart } =
     useContext(CartContext);
@@ -76,13 +78,17 @@ localStorage.setItem("favoriteItems",JSON.stringify(favourite))
             Add to cart
           </Button>
         )}
-        <Button
-          className="mt-2"
-          variant="secondary"
-          onClick={() => favCart(packageTitle, categoryName)}
-        >
-          Add to Favorites
-        </Button>
+{type!=="favorite" &&(
+   <Button
+   className="mt-2"
+   variant="secondary"
+   onClick={() => favCart(packageTitle, categoryName)}
+ >
+   Add to Favorites
+ </Button>
+)}
+     
+
       </Card.Body>
     </Card>
     //***design of an item using card component***

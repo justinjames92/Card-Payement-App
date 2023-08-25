@@ -5,7 +5,7 @@ import { Row,Col } from 'react-bootstrap'
 import PackageBox from '../Home/PackageBox'
 
 const Favorite = () => {
-    const{favoriteProducts,title}=useContext(CartContext);
+  const favoriteProducts = JSON.parse(localStorage.getItem("favoriteItems"))
     console.log(favoriteProducts);
   return (
     <>
@@ -14,14 +14,14 @@ const Favorite = () => {
       favoriteProducts.map((item,k) => (
         <Col md={3} key={k}>
           <PackageBox
-            categoryName={title}
+            // categoryName={title}
+            type="favorite"
             packageTitle={item.name}
             packageThumbnail={item.imageUrl}
             packagePrice={item.price}
           />
         </Col>
       ))}
-    <h1>Hello Favorites</h1>
 
   </Row>
 

@@ -21,6 +21,7 @@ export const SHOP_DATA = [
         name: "Brown Cowboy",
         imageUrl: "https://i.ibb.co/QdJwgmp/brown-cowboy.png",
         price: 35,
+        price_api: "price_1Ni79TBmXesBWQJWVBZsfgAv"
       },
       {
         id: 4,
