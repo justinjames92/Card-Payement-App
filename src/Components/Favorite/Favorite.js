@@ -1,12 +1,9 @@
 import React from 'react'
-import { useContext } from 'react'
-import { CartContext } from '../../Context/Context'
 import { Row,Col } from 'react-bootstrap'
-import PackageBox from '../Home/PackageBox'
+import PackageBox from '../Items/PackageBox'
 
 const Favorite = () => {
   const favoriteProducts = JSON.parse(localStorage.getItem("favoriteItems"))
-    console.log(favoriteProducts);
   return (
     <>
     <Row>
