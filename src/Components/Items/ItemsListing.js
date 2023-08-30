@@ -1,24 +1,21 @@
 import React from "react";
-
 import { CartContext } from "./../../Context/Context";
-import {useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
-import PackageBox from "../../Components/Home/PackageBox";
+import PackageBox from "./PackageBox";
 import { useParams } from "react-router-dom";
 function ItemsListing() {
   const { title } = useParams();
-  console.log(title);
-  const { products,setProduct,product  } = useContext(CartContext);
+  const { products, setProduct, product } = useContext(CartContext);
   useEffect(() => {
     let filteredData = products.find((i) => i.title === title);
     setProduct(filteredData);
   }, [title]); //dependency array
 
-  
   return (
     <Row>
       {product.items !== undefined &&
-        product.items.map((item,k) => (
+        product.items.map((item, k) => (
           <Col md={3} key={k}>
             <PackageBox
               categoryName={title}
@@ -29,11 +26,6 @@ function ItemsListing() {
           </Col>
         ))}
     </Row>
-    
-
-    
-   
-
   );
 }
 

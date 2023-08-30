@@ -72,7 +72,7 @@ console.log(cart.map((item) => {return({price: item.price_api, quantity: item.qu
   let GrandTotal = 0;
   cart.forEach((i) => {
     subTotal = subTotal + i.price * i.quantity;
-    salesTax = subTotal * 0.13;
+    salesTax = subTotal * 0.13
     GrandTotal = salesTax + subTotal;
   });
   console.log(subTotal);
@@ -84,7 +84,6 @@ console.log(cart.map((item) => {return({price: item.price_api, quantity: item.qu
     setCart(removedItem);
     localStorage.setItem("selectedItems", JSON.stringify(removedItem));
   };
-  console.log(cart);
   return (
     <>
       <div>
