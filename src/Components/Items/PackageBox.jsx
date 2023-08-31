@@ -35,8 +35,12 @@ function PackageBox({
   const viewCart = () => {
     navigate("/Carts");
   };
+  const viewFavorite =()=>{
+    navigate("/favorite");
+  }
   // favCart function recieves the parameters on which item is Add to Favorites button is clicked
   const favCart = (packageTitle, categoryName) => {
+    console.log("hello adam");
     let category = products.find((x) => x.title === categoryName); //category variable finds out on which title it is clicked eg. hats, sneakers.jackets etc.
     let categoryView = category.items.find((y) => y.name === packageTitle); // categoryView finds out on which item name under the respective title is clicked.
     let favourite = [];
@@ -45,11 +49,11 @@ function PackageBox({
     if (JSON.parse(localStorage.getItem("favoriteItems"), "[]")) {
       favourite = JSON.parse(localStorage.getItem("favoriteItems"), "[]");
     }
-    favourite.push({ ...categoryView, quantity: 1 }); //new item will be pushed to favourite inaddition to localstorage and a key-value pair  namely quantity is also added to the category view array of objects
+    favourite.push({ ...categoryView, quantity: 1, category:categoryName }); //new item will be pushed to favourite in addition to localstorage and a key-value pair  namely quantity is also added to the category view array of objects
     localStorage.setItem("favoriteItems", JSON.stringify(favourite)); //favourite is set in localstorage
-    setFavoriteProducts(favourite); //favourite is assigned to statevariable favoriteProducts
+   setFavoriteProducts(favourite); //favourite is assigned to state variable favoriteProducts
   };
-
+console.log(favoriteProducts);
   return (
     <Card className="cardItems mt-2 mr-2">
       <Card.Body>
@@ -80,15 +84,38 @@ function PackageBox({
             Add to cart
           </Button>
         )}
-        {type !== "favorite" && (
+        
+
+        {type !== "favorite" &&(
+
+
+
+
+        favoriteProducts && favoriteProducts.some((z)=>z.name=== packageTitle)?
+        (
           <Button
+            className="mt-2"
+            variant="secondary"
+            onClick={() => viewFavorite(packageTitle, categoryName)}
+          >
+            View Favorites
+          </Button>
+
+        ):
+          (<Button
             className="mt-2"
             variant="secondary"
             onClick={() => favCart(packageTitle, categoryName)}
           >
             Add to Favorites
           </Button>
-        )}
+        )
+
+        
+       ) }
+        
+
+        
       </Card.Body>
     </Card>
   );
