@@ -18,6 +18,7 @@ function ItemsListing() {
         product.items.map((item, k) => (
           <Col md={3} key={k}>
             <PackageBox
+            type="listing"
               categoryName={title}
               packageTitle={item.name}
               packageThumbnail={item.imageUrl}

@@ -10,7 +10,7 @@ const Cart = ({ children }) => {
   const [products] = useState(data);
   const [product, setProduct] = useState({});
   const [cart, setCart] = useState(selectedItem || []);
-  const [favoriteProducts, setFavoriteProducts] = useState([favoriteItem]);
+  const [favoriteProducts, setFavoriteProducts] = useState(favoriteItem||[]);
   return (
     <>
       <CartContext.Provider
@@ -22,7 +22,8 @@ const Cart = ({ children }) => {
 
           favoriteProducts,
           setFavoriteProducts,
-          cart, setCart
+          cart, 
+          setCart
 
 
         }}
