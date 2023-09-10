@@ -53,7 +53,7 @@ function PackageBox({
     localStorage.setItem("favoriteItems", JSON.stringify(favourite)); //favourite is set in localstorage
    setFavoriteProducts(favourite); //favourite is assigned to state variable favoriteProducts
   };
-console.log(favoriteProducts);
+
   return (
     <Card className="cardItems mt-2 mr-2">
       <Card.Body>

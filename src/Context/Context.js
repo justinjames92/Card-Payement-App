@@ -7,10 +7,10 @@ const Cart = ({ children }) => {
   const selectedItem = JSON.parse(localStorage.getItem("selectedItems"))
   const favoriteItem = JSON.parse(localStorage.getItem("favoriteItems"))
 
-  const [products] = useState(data);
-  const [product, setProduct] = useState({});
-  const [cart, setCart] = useState(selectedItem || []);
-  const [favoriteProducts, setFavoriteProducts] = useState(favoriteItem||[]);
+  const [products] = useState(data); //Json data
+  const [product, setProduct] = useState({}); // selected product from the entire products
+  const [cart, setCart] = useState(selectedItem || []); // data in cartPage
+  const [favoriteProducts, setFavoriteProducts] = useState(favoriteItem||[]); // data for favoritesPage
   return (
     <>
       <CartContext.Provider

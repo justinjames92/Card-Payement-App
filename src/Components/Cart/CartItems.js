@@ -27,8 +27,8 @@ console.log(cart.map((item) => {return({price: item.price_api, quantity: item.qu
       // ],
       
       mode: 'subscription',
-      successUrl: `http://localhost:3000/success`,
-      cancelUrl: `http://localhost:3000/cancel`,
+      successUrl: `http://localhost:3000/Success`,
+      cancelUrl: `http://localhost:3000/PaymentError`,
       customerEmail: 'customer@email.com',
     });
     console.warn(error.message);
@@ -36,16 +36,12 @@ console.log(cart.map((item) => {return({price: item.price_api, quantity: item.qu
 // ****Quantity Increment & Decrement in cart 
   const updateItemCount = (type, id) => {
     let data = [...cart];
-    console.log(data);
     let selectedData = data.find((i) => i.id === id);
     let selectedIndex = data.findIndex((i) => i.id === id);
-    console.log(selectedData);
     if (type === "increment") {
       selectedData.quantity = selectedData.quantity + 1;
-      console.log(selectedData.quantity);
-      console.log(selectedIndex);
+
       data[selectedIndex] = selectedData;
-      console.log(selectedData);
 
       setCart(data);
     } else {
@@ -75,7 +71,6 @@ console.log(cart.map((item) => {return({price: item.price_api, quantity: item.qu
     salesTax = subTotal * 0.13
     GrandTotal = salesTax + subTotal;
   });
-  console.log(subTotal);
 
   // ***Removing a product from cart***
   const removeItem = (id) => {
